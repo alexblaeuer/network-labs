@@ -1,0 +1,15 @@
+---
+provider: clab
+
+module: [ospf]
+
+nodes:
+  router1:
+    device: vjunos-switch
+    image: vrnetlab/juniper_vjunos-switch:25.2R1.9
+  router2:
+    device: vjunos-switch
+    image: vrnetlab/juniper_vjunos-switch:25.2R1.9
+    
+links:
+  - router1-router2

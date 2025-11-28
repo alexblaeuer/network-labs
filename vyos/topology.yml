@@ -1,0 +1,13 @@
+---
+provider: clab
+
+module: [ospf]
+
+nodes:
+  router1:
+    device: vyos
+  router2:
+    device: vyos
+    
+links:
+  - router1-router2

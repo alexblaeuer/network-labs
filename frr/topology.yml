@@ -1,0 +1,15 @@
+---
+provider: clab
+
+defaults:
+  device: frr
+
+module: [ospf]
+
+nodes:
+  s1:
+  s2:
+  h1:
+    device: linux
+links:
+  - s1-s2

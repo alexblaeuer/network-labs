@@ -1,0 +1,13 @@
+---
+provider: clab
+
+module: [ospf]
+
+nodes:
+  router1:
+    device: srlinux
+  router2:
+    device: srlinux
+    
+links:
+  - router1-router2

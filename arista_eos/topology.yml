@@ -1,0 +1,13 @@
+---
+provider: clab
+
+module: [ospf]
+
+nodes:
+  router1:
+    device: eos
+  router2:
+    device: eos
+    
+links:
+  - router1-router2

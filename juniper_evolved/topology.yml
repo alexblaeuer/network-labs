@@ -1,0 +1,13 @@
+---
+provider: clab
+
+module: [ospf]
+
+nodes:
+  router1:
+    device: vptx
+  router2:
+    device: vptx
+    
+links:
+  - router1-router2

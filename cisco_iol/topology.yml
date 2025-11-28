@@ -1,0 +1,30 @@
+---
+provider: clab
+plugin: [files]
+
+module: [ospf]
+
+nodes:
+  router1:
+    device: iol
+    image: vrnetlab/cisco_iol:17.15.01
+    config.inline: |
+      interface Ethernet0/0
+       no cdp enable
+  router2:
+    device: iol
+    image: vrnetlab/cisco_iol:17.15.01
+    config.inline: |
+      interface Ethernet0/0
+       no cdp enable
+  switch1:
+    device: ioll2
+    image: vrnetlab/cisco_iol:L2-17.15.01
+    config.inline: |
+      interface Ethernet0/0
+       no cdp enable
+
+links:
+  - router1-router2
+  - router1-switch1
+  - router2-switch1
