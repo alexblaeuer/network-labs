@@ -3,11 +3,13 @@ host_vars/
 group_vars/
 config/
 clab_files/
+clab-*/
 hosts.yml
 Vagrantfile
 ansible.cfg
 clab.yml
 _n_*
+netlab.lock
 *.snapshot.*
 graph.*
 
