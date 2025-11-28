@@ -1,0 +1,15 @@
+### netlab ###
+host_vars/
+group_vars/
+config/
+clab_files/
+hosts.yml
+Vagrantfile
+ansible.cfg
+clab.yml
+_n_*
+*.snapshot.*
+graph.*
+
+### Ansible ###
+*.retry
