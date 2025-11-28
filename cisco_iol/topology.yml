@@ -28,3 +28,12 @@ links:
   - router1-router2
   - router1-switch1
   - router2-switch1
+
+validate:
+  ping:
+    description: Pinging router2 from router1
+    nodes: [ router1 ]
+    devices: [ linux ]
+    exec: ping router2
+    valid: |
+      "Success rate is 100 percent" in stdout
