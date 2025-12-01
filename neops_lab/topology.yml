@@ -1,0 +1,67 @@
+---
+provider: clab
+
+plugin: [ multilab ]
+defaults.multilab.id: 120
+
+groups:
+  routers:
+    members: [router1, router2, router3]
+    module: [ospf, vlan]
+    vlan.mode: route
+    config: no_cdp.j2
+  switches:
+    members: [switch1, switch2, switch3]
+    module: [vlan, stp]
+    vlan.mode: bridge
+    stp:
+      protocol: pvrst
+    config: no_cdp.j2
+
+nodes:
+  router1:
+    device: iol
+    image: vrnetlab/cisco_iol:17.15.01
+  router2:
+    device: iol
+    image: vrnetlab/cisco_iol:17.15.01
+  router3:
+    device: iol
+    image: vrnetlab/cisco_iol:17.15.01
+  switch1:
+    device: ioll2
+    image: vrnetlab/cisco_iol:L2-17.15.01
+  switch2:
+    device: ioll2
+    image: vrnetlab/cisco_iol:L2-17.15.01
+  switch3:
+    device: ioll2
+    image: vrnetlab/cisco_iol:L2-17.15.01
+
+vlans:
+  data:
+    id: 10
+  voice:
+    id: 20
+  video:
+    id: 30
+
+links:
+  - router1:
+    router2:
+  - router2:
+    router3:
+  - router3:
+    router1:
+  - switch1:
+    switch2:
+    vlan.trunk: [data, voice, video]
+  - switch1:
+    router1:
+    vlan.trunk: [data, voice, video]
+  - switch2:
+    router2:
+    vlan.trunk: [data, voice, video]
+  - switch3:
+    router3:
+    vlan.trunk: [data, voice, video]
