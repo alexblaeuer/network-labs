@@ -47,21 +47,25 @@ vlans:
     id: 30
 
 links:
-  - router1:
-    router2:
-  - router2:
-    router3:
-  - router3:
-    router1:
-  - switch1:
-    switch2:
+  - group: wan_routed
+    members:
+    - router1:
+      router2:
+    - router2:
+      router3:
+    - router3:
+      router1:
+  - group: lan_routed
+    ospf.passive: true
+    members:
+      - switch1:
+        router1:
+      - switch2:
+        router2:
+      - switch3:
+        router3:
+  - group: lan_switched
     vlan.trunk: [data, voice, video]
-  - switch1:
-    router1:
-    vlan.trunk: [data, voice, video]
-  - switch2:
-    router2:
-    vlan.trunk: [data, voice, video]
-  - switch3:
-    router3:
-    vlan.trunk: [data, voice, video]
+    members:
+    - switch1:
+      switch2:
